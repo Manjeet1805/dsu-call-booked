@@ -1,0 +1,714 @@
+---
+import Layout from '../layouts/Layout.astro';
+import dsuLogo from '../images/dsu-logo.png';
+---
+
+<Layout
+  title="Your Call is Booked – DSU Platinum"
+  description="Your discovery call with DSU Platinum has been confirmed. Get ready for your session."
+>
+  <main class="main">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <a href="https://www.dsu-platinum.com" class="logo-link" aria-label="DSU Platinum Home">
+          <img src={dsuLogo.src} alt="DSU Platinum" class="logo" width="160" height="40" />
+        </a>
+
+        <!-- Animated Checkmark -->
+        <div class="checkmark-wrapper">
+          <svg class="checkmark-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="checkmark-circle" cx="40" cy="40" r="36" stroke="var(--brand-500)" stroke-width="3" />
+            <path class="checkmark-tick" d="M24 42 L35 53 L56 28" stroke="var(--brand-500)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <h1 class="hero-title">
+          Your Call is <span class="highlight">Confirmed</span>
+        </h1>
+        <p class="hero-subtitle">
+          We're looking forward to speaking with you. Please check your email for the meeting details and calendar invite.
+        </p>
+
+        <!-- Calendar Buttons -->
+        <div class="calendar-buttons">
+          <a id="googleCalBtn" href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Add to Google Calendar
+          </a>
+          <a id="icsDownloadBtn" href="/event.ics" class="btn btn-secondary" download="dsu-discovery-call.ics">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Apple / Outlook Calendar
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+      <div class="container">
+        <div class="video-badge">Important</div>
+        <h2 class="section-title">Watch This Short Video</h2>
+        <p class="section-subtitle">So you're fully prepared for your call and know what to expect.</p>
+        <div class="video-wrapper" id="videoWrapper">
+          <div class="video-placeholder" id="videoPlaceholder">
+            <div class="play-button" id="playButton" role="button" tabindex="0" aria-label="Play Video">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+            <p class="play-text">Watch the Video</p>
+          </div>
+          <!-- Replace VIDEO_URL_HERE with the actual hosted video URL -->
+          <video id="heroVideo" preload="none" playsinline controls style="display:none; width:100%; border-radius: 12px;">
+            <source src="VIDEO_URL_HERE" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- What to Expect Section -->
+    <section class="steps-section">
+      <div class="container">
+        <h2 class="section-title">What to Expect</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Check Your Inbox</h3>
+            <p>You'll receive a confirmation email with all the details and a link to join the call.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Prepare Your Questions</h3>
+            <p>Think about your goals and what you want to achieve. We'll be happy to answer all your questions.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Join the Call on Time</h3>
+            <p>Be on time and make sure you're in a quiet place with a stable internet connection.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Get to Know Manjeet Section -->
+    <section class="more-section">
+      <div class="container">
+        <h2 class="section-title">Get to Know Manjeet</h2>
+        <p class="section-subtitle">Learn more about DSU Platinum and the mentoring programme.</p>
+        <div class="link-cards">
+          <a href="https://dsuplatinum.com" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <div class="link-card-content">
+              <h3>DSU Platinum Website</h3>
+              <p>All information about the coaching programme</p>
+            </div>
+            <svg class="link-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          </a>
+
+          <a href="https://www.instagram.com/officialrichteen/" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                <circle cx="12" cy="12" r="5"></circle>
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
+              </svg>
+            </div>
+            <div class="link-card-content">
+              <h3>Manjeet on Instagram</h3>
+              <p>Daily insights &amp; tips</p>
+            </div>
+            <svg class="link-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          </a>
+
+          <a href="#" target="_blank" rel="noopener" class="link-card">
+            <div class="link-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2"></rect>
+              </svg>
+            </div>
+            <div class="link-card-content">
+              <h3>Success Stories</h3>
+              <p>Real results from our participants</p>
+            </div>
+            <svg class="link-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="section-title">Need to Reschedule?</h2>
+        <p class="section-subtitle">No worries — you can easily book a new time slot below.</p>
+        <a href="https://calendly.com/desirichkid/discovery" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Book a New Time
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-logo">
+          <img src={dsuLogo.src} alt="DSU Platinum" width="140" height="32" />
+        </div>
+        <p class="footer-text">
+          By booking a call you agree to our
+          <a href="/privacy">Privacy Policy</a> and
+          <a href="/terms">Terms of Service</a>.
+        </p>
+        <p class="footer-disclaimer">
+          Testimonials and results shown on this page are real but do not represent typical outcomes. No income or success guarantee is given.
+        </p>
+        <p class="footer-copy">
+          &copy; {new Date().getFullYear()} DSU Platinum. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </main>
+</Layout>
+
+<style>
+  .main {
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  /* === HERO === */
+  .hero {
+    text-align: center;
+    padding: 60px 0 40px;
+  }
+
+  .logo-link {
+    display: inline-block;
+    margin-bottom: 40px;
+  }
+
+  .logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Animated Checkmark */
+  .checkmark-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 28px;
+  }
+
+  .checkmark-svg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .checkmark-circle {
+    fill: none;
+    stroke-dasharray: 226;
+    stroke-dashoffset: 226;
+    animation: drawCircle 0.6s ease-out 0.2s forwards;
+  }
+
+  .checkmark-tick {
+    fill: none;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: drawTick 0.4s ease-out 0.7s forwards;
+  }
+
+  @keyframes drawCircle {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes drawTick {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+  }
+
+  .highlight {
+    color: var(--brand-500);
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+
+  /* === BUTTONS === */
+  .calendar-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) {
+    .calendar-buttons {
+      flex-direction: row;
+      max-width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 171, 148, 0.25);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 171, 148, 0.4);
+  }
+
+  .btn-secondary {
+    background: var(--surface-100);
+    color: var(--text-primary);
+    border: 1.5px solid var(--border-medium);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--brand-500);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 171, 148, 0.15);
+  }
+
+  /* === STEPS === */
+  .steps-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 480px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media (min-width: 640px) {
+    .steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+
+  .step-card {
+    background: var(--surface-200);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: border-color 0.2s ease;
+  }
+
+  .step-card:hover {
+    border-color: var(--brand-500);
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 171, 148, 0.08);
+    color: var(--brand-500);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    border: 1px solid rgba(0, 171, 148, 0.2);
+  }
+
+  .step-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+
+  .step-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* === VIDEO === */
+  .video-section {
+    padding: 48px 0 60px;
+    background: var(--surface-200);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .video-badge {
+    display: inline-block;
+    padding: 5px 16px;
+    background: rgba(0, 171, 148, 0.08);
+    color: var(--brand-600);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(0, 171, 148, 0.2);
+    text-align: center;
+  }
+
+  .video-section .container {
+    text-align: center;
+  }
+
+  .video-wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface-300);
+    border: 1px solid var(--border-light);
+    aspect-ratio: 16 / 9;
+    position: relative;
+  }
+
+  .video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--surface-300), var(--surface-200));
+  }
+
+  .play-button {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--brand-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 12px;
+  }
+
+  .play-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(0, 171, 148, 0.4);
+  }
+
+  .play-button svg {
+    margin-left: 4px;
+  }
+
+  .play-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  /* === MORE / LINK CARDS === */
+  .more-section {
+    padding: 56px 0;
+  }
+
+  .more-section .container {
+    text-align: center;
+  }
+
+  .link-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-radius: 14px;
+    border: 1.5px solid var(--border-light);
+    background: var(--surface-200);
+    transition: all 0.25s ease;
+    text-align: left;
+  }
+
+  .link-card:hover {
+    border-color: var(--brand-500);
+    box-shadow: 0 4px 24px rgba(0, 171, 148, 0.12);
+    transform: translateY(-2px);
+    background: var(--surface-100);
+  }
+
+  .link-card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(0, 171, 148, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 171, 148, 0.15);
+  }
+
+  .link-card-icon svg {
+    width: 22px;
+    height: 22px;
+    color: var(--brand-500);
+  }
+
+  .link-card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .link-card-content h3 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: var(--text-primary);
+  }
+
+  .link-card-content p {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  .link-card-arrow {
+    width: 20px;
+    height: 20px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: color 0.25s, transform 0.25s;
+  }
+
+  .link-card:hover .link-card-arrow {
+    color: var(--brand-500);
+    transform: translateX(3px);
+  }
+
+  /* === CTA === */
+  .cta-section {
+    text-align: center;
+    padding: 40px 0 60px;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .footer-logo {
+    margin-bottom: 20px;
+  }
+
+  .footer-logo img {
+    height: 28px;
+    width: auto;
+    margin: 0 auto;
+    object-fit: contain;
+    opacity: 0.6;
+  }
+
+  .footer-text {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .footer-text a {
+    color: var(--brand-500);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .footer-text a:hover {
+    color: var(--brand-600);
+  }
+
+  .footer-disclaimer {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin: 0 auto 12px;
+    line-height: 1.5;
+    opacity: 0.7;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+</style>
+
+<script>
+  // ============================================================
+  // Calendly URL Parameter Parsing & Dynamic Calendar Links
+  // ============================================================
+  // When Calendly redirects here after a booking, it appends:
+  // event_start_time, event_end_time, invitee_full_name,
+  // invitee_email, event_type_name (ISO 8601 for times).
+
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const startRaw = params.get('event_start_time');
+    const endRaw = params.get('event_end_time');
+    const inviteeName = params.get('invitee_full_name') || '';
+    const eventName = params.get('event_type_name') || 'Discovery Call';
+
+    const title = `DSU Platinum – ${eventName}`;
+    const description =
+      'Your personal discovery call with the DSU Platinum team. Please be on time and make sure you have a stable internet connection.';
+    const location = 'Online (link will be sent via email)';
+
+    const googleBtn = document.getElementById('googleCalBtn') as HTMLAnchorElement;
+    const icsBtn = document.getElementById('icsDownloadBtn') as HTMLAnchorElement;
+
+    if (startRaw && endRaw) {
+      const startDate = new Date(startRaw);
+      const endDate = new Date(endRaw);
+
+      // Google Calendar date format: YYYYMMDDTHHmmssZ
+      const toGoogleDate = (d: Date) =>
+        d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+
+      const googleUrl = new URL('https://calendar.google.com/calendar/render');
+      googleUrl.searchParams.set('action', 'TEMPLATE');
+      googleUrl.searchParams.set('text', title);
+      googleUrl.searchParams.set('dates', `${toGoogleDate(startDate)}/${toGoogleDate(endDate)}`);
+      googleUrl.searchParams.set('details', description);
+      googleUrl.searchParams.set('location', location);
+      googleBtn.href = googleUrl.toString();
+
+      // ICS file for Apple / Outlook (generated client-side as Blob)
+      const toIcsDate = (d: Date) =>
+        d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+
+      const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//DSU Platinum//Discovery Call//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        `DTSTART:${toIcsDate(startDate)}`,
+        `DTEND:${toIcsDate(endDate)}`,
+        `SUMMARY:${title}`,
+        `DESCRIPTION:${description}`,
+        `LOCATION:${location}`,
+        'STATUS:CONFIRMED',
+        'SEQUENCE:0',
+        'END:VEVENT',
+        'END:VCALENDAR',
+      ].join('\r\n');
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      icsBtn.href = URL.createObjectURL(blob);
+    } else {
+      // Fallback when no Calendly params (direct visit)
+      const googleUrl = new URL('https://calendar.google.com/calendar/render');
+      googleUrl.searchParams.set('action', 'TEMPLATE');
+      googleUrl.searchParams.set('text', title);
+      googleUrl.searchParams.set('details', description);
+      googleUrl.searchParams.set('location', location);
+      googleBtn.href = googleUrl.toString();
+      // icsBtn already points to /event.ics as fallback
+    }
+
+    // Personalised greeting with first name
+    if (inviteeName) {
+      const h1 = document.querySelector('.hero-title');
+      if (h1) {
+        h1.innerHTML = `Thanks, ${inviteeName.split(' ')[0]}! Your call is <span class="highlight">Confirmed</span>`;
+      }
+    }
+  })();
+
+  // ============================================================
+  // Video Player
+  // ============================================================
+  (function () {
+    const placeholder = document.getElementById('videoPlaceholder');
+    const video = document.getElementById('heroVideo') as HTMLVideoElement | null;
+    if (!placeholder || !video) return;
+
+    const play = () => {
+      placeholder.style.display = 'none';
+      video.style.display = 'block';
+      video.play().catch(() => {});
+    };
+
+    placeholder.addEventListener('click', play);
+    placeholder.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        play();
+      }
+    });
+  })();
+</script>

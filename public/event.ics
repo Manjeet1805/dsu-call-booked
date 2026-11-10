@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//DSU Platinum//Discovery Call//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:DSU Platinum – Discovery Call
+DESCRIPTION:Your personal discovery call with the DSU Platinum team. Please be on time and make sure you have a stable internet connection.
+LOCATION:Online (link will be sent via email)
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR

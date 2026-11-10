@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+Sitemap: https://dsu-call-booked.vercel.app/sitemap-index.xml
