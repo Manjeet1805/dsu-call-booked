@@ -41,24 +41,30 @@ const pageUrl = canonical || `${siteUrl}${Astro.url.pathname}`;
 
     <style is:global>
       :root {
-        --brand-500: #00ab94;
-        --brand-600: #009882;
-        --brand-700: #007a6a;
-        --brand-400: #009882;
-        --brand-300: #007a6a;
-        --brand-100: #ccefe9;
-        --brand-50: rgba(0, 171, 148, 0.06);
+        --brand-500: #6366f1;
+        --brand-600: #4f46e5;
+        --brand-700: #4338ca;
+        --brand-400: #818cf8;
+        --brand-300: #a5b4fc;
+        --brand-100: #e0e7ff;
+        --brand-50: rgba(99, 102, 241, 0.06);
+        --gold-500: #d4a853;
+        --gold-400: #e0bb6a;
+        --gold-600: #b8923f;
         --surface-100: #ffffff;
-        --surface-200: #f7f7f8;
-        --surface-300: #efefef;
-        --surface-400: #e5e5e5;
-        --border-light: rgba(0, 0, 0, 0.08);
-        --border-medium: rgba(0, 0, 0, 0.12);
-        --text-primary: #111111;
-        --text-secondary: #555555;
-        --text-muted: #999999;
+        --surface-200: #f8f8fa;
+        --surface-300: #f0f0f4;
+        --surface-400: #e5e5eb;
+        --border-light: rgba(0, 0, 0, 0.06);
+        --border-medium: rgba(0, 0, 0, 0.10);
+        --text-primary: #111118;
+        --text-secondary: #52526b;
+        --text-muted: #8e8ea0;
         --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
           sans-serif;
+        --dark-bg: #0c0e1a;
+        --dark-surface: #161830;
+        --dark-border: rgba(255, 255, 255, 0.06);
       }
 
       *,
@@ -120,7 +126,6 @@ const pageUrl = canonical || `${siteUrl}${Astro.url.pathname}`;
 
     <script>
       // ── Particle Network Animation ──
-      // White dots connected by lines, drifting across the screen
       const canvas = document.getElementById('bgCanvas') as HTMLCanvasElement;
       const ctx = canvas.getContext('2d')!;
       let W: number;
@@ -139,9 +144,9 @@ const pageUrl = canonical || `${siteUrl}${Astro.url.pathname}`;
 
       let particles: Particle[] = [];
 
-      const LINE_DIST = 140;      // max distance for connecting lines
-      const MOUSE_DIST = 200;     // mouse interaction radius
-      const BASE_SPEED = 0.4;     // particle drift speed
+      const LINE_DIST = 180;
+      const MOUSE_DIST = 240;
+      const BASE_SPEED = 0.4;
 
       function resize() {
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -175,19 +180,16 @@ const pageUrl = canonical || `${siteUrl}${Astro.url.pathname}`;
       function animate() {
         ctx.clearRect(0, 0, W, H);
 
-        // Move particles
         for (const p of particles) {
           p.x += p.vx;
           p.y += p.vy;
-
-          // Wrap around edges
           if (p.x < -20) p.x = W + 20;
           if (p.x > W + 20) p.x = -20;
           if (p.y < -20) p.y = H + 20;
           if (p.y > H + 20) p.y = -20;
         }
 
-        // Draw lines between close particles
+        // Draw lines between close particles — indigo tint
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
             const a = particles[i];
@@ -197,45 +199,44 @@ const pageUrl = canonical || `${siteUrl}${Astro.url.pathname}`;
             const dist = Math.sqrt(dx * dx + dy * dy);
 
             if (dist < LINE_DIST) {
-              const alpha = (1 - dist / LINE_DIST) * 0.12;
+              const alpha = (1 - dist / LINE_DIST) * 0.10;
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
               ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = `rgba(0, 0, 0, ${alpha})`;
-              ctx.lineWidth = 0.6;
+              ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+              ctx.lineWidth = 0.9;
               ctx.stroke();
             }
           }
         }
 
-        // Draw lines from mouse to nearby particles
+        // Mouse interaction lines
         for (const p of particles) {
           const dx = p.x - mouse.x;
           const dy = p.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < MOUSE_DIST) {
-            const alpha = (1 - dist / MOUSE_DIST) * 0.25;
+            const alpha = (1 - dist / MOUSE_DIST) * 0.22;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(0, 0, 0, ${alpha})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+            ctx.lineWidth = 0.75;
             ctx.stroke();
           }
         }
 
-        // Draw particles (dots)
+        // Draw particles
         for (const p of particles) {
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(0, 0, 0, ${p.opacity * 0.4})`;
+          ctx.fillStyle = `rgba(99, 102, 241, ${p.opacity * 0.35})`;
           ctx.fill();
         }
 
         animId = requestAnimationFrame(animate);
       }
 
-      // Mouse tracking for interactive glow
       window.addEventListener('mousemove', (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
