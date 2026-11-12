@@ -11,7 +11,7 @@ import dsuLogo from '../images/dsu-logo.png';
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <a href="https://www.dsu-platinum.com" class="logo-link" aria-label="DSU Platinum Home">
+        <a href="/" class="logo-link" aria-label="DSU Platinum Home">
           <img src={dsuLogo.src} alt="DSU Platinum" class="logo" width="160" height="40" />
         </a>
 
@@ -82,37 +82,46 @@ import dsuLogo from '../images/dsu-logo.png';
     <!-- What to Expect Section -->
     <section class="steps-section">
       <div class="container">
-        <h2 class="section-title">What to Expect</h2>
-        <div class="steps-grid">
+        <h2 class="section-title">What to <span class="title-highlight">Expect</span></h2>
+        <p class="section-subtitle">Here's what happens next and how to prepare for your call.</p>
+        <div class="section-divider"></div>
+        <div class="steps-timeline">
           <div class="step-card">
-            <div class="step-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 12h-6l-2 3h-4l-2-3H2"/>
-                <path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/>
-              </svg>
+            <div class="step-icon-img">
+              <img src="/icon_1.webp" alt="Check Your Inbox" width="72" height="72" />
             </div>
-            <h3>Check Your Inbox</h3>
-            <p>You'll receive a confirmation email with all the details and a link to join the call.</p>
+            <div class="step-content">
+              <h3>Check Your Inbox</h3>
+              <p>You'll receive a confirmation email with all the details and a link to join the call.</p>
+            </div>
+          </div>
+          <div class="step-connector">
+            <span class="connector-dot"></span>
+            <span class="connector-dot"></span>
+            <span class="connector-dot"></span>
           </div>
           <div class="step-card">
-            <div class="step-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
-              </svg>
+            <div class="step-icon-img">
+              <img src="/icon_2.webp" alt="Prepare Your Questions" width="72" height="72" />
             </div>
-            <h3>Prepare Your Questions</h3>
-            <p>Think about your goals and what you want to achieve. We'll answer all your questions.</p>
+            <div class="step-content">
+              <h3>Prepare Your Questions</h3>
+              <p>Think about your goals and what you want to achieve. We'll answer all your questions.</p>
+            </div>
+          </div>
+          <div class="step-connector">
+            <span class="connector-dot"></span>
+            <span class="connector-dot"></span>
+            <span class="connector-dot"></span>
           </div>
           <div class="step-card">
-            <div class="step-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15.05 5A5 5 0 0119 8.95M15.05 1A9 9 0 0123 8.94m-1 7.98v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-              </svg>
+            <div class="step-icon-img">
+              <img src="/icon_3.webp" alt="Join the Call on Time" width="72" height="72" />
             </div>
-            <h3>Join the Call on Time</h3>
-            <p>Be on time and make sure you're in a quiet place with a stable internet connection.</p>
+            <div class="step-content">
+              <h3>Join the Call on Time</h3>
+              <p>Be on time and make sure you're in a quiet place with a stable internet connection.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -139,12 +148,8 @@ import dsuLogo from '../images/dsu-logo.png';
           </a>
 
           <a href="https://www.instagram.com/officialrichteen/" target="_blank" rel="noopener" class="link-card">
-            <div class="link-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
-                <circle cx="12" cy="12" r="5"></circle>
-                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
-              </svg>
+            <div class="link-card-icon link-card-icon--img">
+              <img src="/instagram_logo.webp" alt="Instagram" />
             </div>
             <div class="link-card-content">
               <h3>Manjeet on Instagram</h3>
@@ -153,7 +158,7 @@ import dsuLogo from '../images/dsu-logo.png';
             <svg class="link-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
           </a>
 
-          <a href="#" target="_blank" rel="noopener" class="link-card">
+          <a href="https://dsuplatinum.com" target="_blank" rel="noopener" class="link-card">
             <div class="link-card-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="23 7 16 12 23 17 23 7"></polygon>
@@ -174,7 +179,7 @@ import dsuLogo from '../images/dsu-logo.png';
     <section class="cta-section">
       <div class="container">
         <h2 class="section-title">Need to Reschedule?</h2>
-        <p class="section-subtitle">No worries — you can easily book a new time slot below.</p>
+        <p class="section-subtitle">No worries, you can easily book a new time slot below.</p>
         <a href="https://calendly.com/desirichkid/discovery" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
           Book a New Time
         </a>
@@ -482,12 +487,28 @@ import dsuLogo from '../images/dsu-logo.png';
 
   /* === STEPS — Glass Cards === */
   .steps-section {
-    padding: 44px 0 40px;
+    padding: 50px 0 44px;
+  }
+
+  .title-highlight {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-divider {
+    width: 40px;
+    height: 3px;
+    background: var(--brand-500);
+    border-radius: 2px;
+    margin: 16px auto 32px;
   }
 
   .section-title {
-    font-size: clamp(1.2rem, 3.5vw, 1.65rem);
-    font-weight: 700;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-weight: 800;
     text-align: center;
     margin-bottom: 10px;
     color: var(--text-primary);
@@ -502,76 +523,87 @@ import dsuLogo from '../images/dsu-logo.png';
     line-height: 1.6;
   }
 
-  .steps-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  @media (min-width: 640px) {
-    .steps-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
+  .steps-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 520px;
+    margin: 0 auto;
   }
 
   .step-card {
-    background: linear-gradient(160deg, var(--surface-200) 0%, var(--surface-100) 100%);
-    border: 1px solid var(--border-light);
-    border-radius: 14px;
-    padding: 22px 20px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: linear-gradient(160deg, rgba(240, 240, 255, 0.92) 0%, rgba(235, 233, 252, 0.88) 100%);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(99, 102, 241, 0.12);
+    border-radius: 20px;
+    padding: 28px 30px;
+    width: 100%;
     transition: all 0.25s ease;
     position: relative;
     overflow: hidden;
   }
 
-  .step-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--brand-400), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
   .step-card:hover {
     border-color: rgba(99, 102, 241, 0.2);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 8px 30px rgba(99, 102, 241, 0.08);
   }
 
-  .step-card:hover::before {
-    opacity: 1;
+  .step-icon-img {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
   }
 
-  .step-icon {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(99, 102, 241, 0.04));
-    color: var(--brand-500);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 14px;
-    border: 1px solid rgba(99, 102, 241, 0.12);
+  .step-icon-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 16px rgba(99, 102, 241, 0.25)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+  }
+
+  .step-content {
+    flex: 1;
+    text-align: left;
   }
 
   .step-card h3 {
-    font-size: 0.97rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
     margin-bottom: 6px;
     color: var(--text-primary);
   }
 
   .step-card p {
-    font-size: 0.86rem;
+    font-size: 0.88rem;
     color: var(--text-secondary);
-    line-height: 1.5;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .step-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 0;
+  }
+
+  .connector-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--brand-400);
+    opacity: 0.5;
+  }
+
+  .connector-dot:nth-child(2) {
+    opacity: 0.35;
+    width: 4px;
+    height: 4px;
   }
 
   /* === MORE / LINK CARDS === */
@@ -619,6 +651,19 @@ import dsuLogo from '../images/dsu-logo.png';
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+  }
+
+  .link-card-icon--img {
+    background: none;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .link-card-icon--img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 11px;
     border: 1px solid rgba(99, 102, 241, 0.12);
   }
 
