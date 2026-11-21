@@ -1,0 +1,141 @@
+{
+  "name": "DSU Platinum – QualifiedLead (New Funnel)",
+  "nodes": [
+    {
+      "parameters": {
+        "formId": "DEINE_TYPEFORM_FORM_ID"
+      },
+      "id": "a1b2c3d4-0001",
+      "name": "Typeform Trigger",
+      "type": "n8n-nodes-base.typeformTrigger",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "qualified-lead-trigger"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Typeform-Antworten flach machen\nconst items = $input.all();\nconst answers = items[0].json.answers || [];\nconst hidden = items[0].json.hidden || {};\nconst result = {};\n\n// Hidden Fields (UTM etc.) uebernehmen\nObject.assign(result, hidden);\n\n// Antworten auslesen\nfor (const answer of answers) {\n  const ref = answer.field?.ref || answer.field?.id || 'unknown';\n  switch (answer.type) {\n    case 'email':\n      result.email = answer.email;\n      break;\n    case 'text':\n    case 'short_text':\n    case 'long_text':\n      result[ref] = answer.text;\n      break;\n    case 'choice':\n      result[ref] = answer.choice?.label || '';\n      break;\n    case 'number':\n      result[ref] = answer.number;\n      break;\n    case 'phone_number':\n      result.phone = answer.phone_number;\n      break;\n    default:\n      result[ref] = answer[answer.type];\n  }\n}\n\n// Budget-Wert extrahieren\nconst budgetAnswer = answers.find(a => {\n  const label = (a.choice?.label || a.text || '').toLowerCase();\n  const ref = (a.field?.ref || '').toLowerCase();\n  return ref.includes('budget') || label.includes('$') || label.includes('€') || ref.includes('invest');\n});\n\nif (budgetAnswer) {\n  const budgetText = budgetAnswer.choice?.label || budgetAnswer.text || String(budgetAnswer.number || 0);\n  const numbers = budgetText.match(/[\\d.,]+/g);\n  result.budget_raw = budgetText;\n  result.budget_value = numbers ? parseInt(numbers[0].replace(/[.,]/g, '')) : 0;\n} else {\n  result.budget_raw = 'not found';\n  result.budget_value = 0;\n}\n\nreturn [{ json: result }];"
+      },
+      "id": "a1b2c3d4-0002",
+      "name": "Felder zuordnen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "budget-check",
+              "leftValue": "={{ $json.budget_value }}",
+              "rightValue": 500,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0003",
+      "name": "Budget >= $500?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [710, 300]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Meta Conversions API Payload vorbereiten\nconst crypto = require('crypto');\nconst data = $input.first().json;\n\nconst hashSHA256 = (value) => {\n  if (!value) return '';\n  return crypto.createHash('sha256').update(value.trim().toLowerCase()).digest('hex');\n};\n\nconst payload = {\n  data: [{\n    event_name: 'QualifiedLead',\n    event_time: Math.floor(Date.now() / 1000),\n    action_source: 'website',\n    event_source_url: 'https://dsutrain.typeform.com',\n    user_data: {\n      em: data.email ? [hashSHA256(data.email)] : undefined,\n      ph: data.phone ? [hashSHA256(data.phone)] : undefined\n    },\n    custom_data: {\n      budget: data.budget_raw || '',\n      budget_value: data.budget_value || 0,\n      currency: 'USD'\n    }\n  }]\n};\n\n// Leere Felder entfernen\nconst ud = payload.data[0].user_data;\nObject.keys(ud).forEach(key => {\n  if (!ud[key]) delete ud[key];\n});\n\nreturn [{ json: payload }];"
+      },
+      "id": "a1b2c3d4-0004",
+      "name": "Meta CAPI Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v18.0/1383668580631493/events",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "DEIN_META_ACCESS_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0005",
+      "name": "An Meta CAPI senden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1170, 200]
+    }
+  ],
+  "connections": {
+    "Typeform Trigger": {
+      "main": [
+        [
+          {
+            "node": "Felder zuordnen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Felder zuordnen": {
+      "main": [
+        [
+          {
+            "node": "Budget >= $500?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Budget >= $500?": {
+      "main": [
+        [
+          {
+            "node": "Meta CAPI Payload",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Meta CAPI Payload": {
+      "main": [
+        [
+          {
+            "node": "An Meta CAPI senden",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

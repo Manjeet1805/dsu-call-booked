@@ -853,3 +853,12 @@ import dsuLogo from '../images/dsu-logo.png';
     });
   })();
 </script>
+
+
+<script is:inline>
+  // Fire Meta Pixel 'Schedule' event on confirmation page
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'Schedule');
+  }
+</script>
+
