@@ -588,8 +588,11 @@ import dsuLogo from '../images/dsu-logo.png';
 </script>
 
 <script is:inline>
-  // Fire Meta Pixel 'Schedule' event on confirmation page
-  if (typeof fbq !== 'undefined') {
-    fbq('track', 'Schedule');
-  }
+  // Fire Meta Pixel 'Schedule' event only once per session (prevents double-counting on refresh)
+  try {
+    if (typeof fbq !== 'undefined' && !sessionStorage.getItem('schedule_fired')) {
+      fbq('track', 'Schedule');
+      sessionStorage.setItem('schedule_fired', '1');
+    }
+  } catch (e) {}
 </script>
